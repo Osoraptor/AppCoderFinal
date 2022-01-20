@@ -1,0 +1,18 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <p>Contenido párticular de Excursiones</p>
+    
+    <ul>
+    
+        {% for excursion in lista %}
+            <li>{{excursion.lugar}}-{{excursion.duracion}} Minutos-{{excursion.precio}} USD</li>
+        {% endfor %}
+            
+    </ul>
+
+{% endblock contenidoQueCambia %}

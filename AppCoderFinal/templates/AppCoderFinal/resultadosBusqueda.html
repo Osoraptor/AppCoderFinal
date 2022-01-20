@@ -1,0 +1,28 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <p>Resultados para el pais {{pais}}</p>
+
+        
+    {% if ciudades %}
+        
+    <ul>
+        
+        {% for ciudad in ciudades %}
+            <li>
+                {{ciudad}}
+            </li>
+        {% endfor %}
+            
+    </ul>
+
+    {% endif %}
+
+
+    
+{% endblock contenidoQueCambia %}

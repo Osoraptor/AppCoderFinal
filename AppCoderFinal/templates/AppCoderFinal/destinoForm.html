@@ -1,0 +1,34 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario Destinos</title>
+    </head>
+    <body>
+        <center>
+        <form action="/AppCoderFinal/destinoForm/" method="post">{% csrf_token %}
+            
+            <br>
+            <p>Agrega un nuevo destino.</p>
+            <br>
+            <p>Pais: <input type="text" name="pais"></p>
+            <p>Ciudad: <input type="text" name="ciudad"></p>
+            
+            <input type="submit" value="Crear">
+        </center>
+    </body>
+    </html>
+
+
+{% endblock contenidoQueCambia %}
+
+
