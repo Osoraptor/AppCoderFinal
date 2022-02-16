@@ -1,0 +1,34 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+{% block contenidoQueCambia %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Curso Borrar</title>
+    </head>
+    <body>
+
+
+        <form method="post">{% csrf_token %}
+            <p><strong>¿Estas seguro de querer borrar "{{ object }}" como destino?</strong></p>
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+        </form>
+
+        <br>
+        <p>
+            <a href="{% url 'List' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+        </p>
+
+        
+    </body>
+    </html>
+
+
+{% endblock contenidoQueCambia %}
+
+

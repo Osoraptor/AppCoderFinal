@@ -1,0 +1,20 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        <p>Nombre de la Ciudad: <i>{{ destinos.ciudad }}</i> </p>
+        <p>Pais: <i>{{ destinos.pais }}</i> </p>
+        <p>
+            <a href="{% url 'List' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+        </p>
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

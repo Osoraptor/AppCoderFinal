@@ -8,7 +8,7 @@ class Destinos(models.Model):
     ciudad = models.CharField(max_length=25)
 
     def __str__(self): 
-        return f'{self.pais}-{self.ciudad}'
+        return f'{self.pais} - {self.ciudad}'
 
 class Alojamientos(models.Model):
 

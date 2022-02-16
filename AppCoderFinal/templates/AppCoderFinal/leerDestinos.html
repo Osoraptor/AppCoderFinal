@@ -1,0 +1,28 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        {% for destino in destinos %}
+
+            <li>{{destino}}</li>
+            <button>
+                <a href="{% url 'BorrarDestino' destino.id %}">Eliminar</a>
+                <a href="{% url 'EditarDestino' destino.id %}">Editar</a>
+            </button>
+            
+        {% endfor %}
+        
+        <br>
+        <a href="{% url 'DestinoFormulario' %}">Agrega otro Destino</a>
+
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

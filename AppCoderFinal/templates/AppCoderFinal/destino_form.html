@@ -11,23 +11,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Formulario Destinos</title>
+        <title>Desttino Formulario</title>
     </head>
     <body>
         <center>
-            <form action="/AppCoderFinal/destinoForm/" method="post">{% csrf_token %}
-                <br>
-                <p>Agrega un nuevo destino.</p>
-                <br>
+            <br>
+            <form method="post">{% csrf_token %}
+
+                {{ form.as_p }}
     
-                {{miForm.as_table}}
-    
-                <input type="submit" value="Crear">
-            </center>
+                <input type="submit" value="Enviar" />
+            </form>
+        
+            <br>
+            <p>
+                <a href="{% url 'List' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+            </p>
+        </center>
+
+
     </body>
     </html>
 
 
 {% endblock contenidoQueCambia %}
-
-
