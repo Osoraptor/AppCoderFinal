@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from AppCoderFinal.forms import AlojamientosForm, DestinosForm, ExcursionesForm
+from AppCoderFinal.forms import AlojamientosForm, DestinosForm, ExcursionesForm, UserEditForm
 
-from AppCoderFinal.models import Alojamientos, Destinos, Excursiones
+from AppCoderFinal.models import Alojamientos, Destinos, Excursiones, Avatar
 from django.http import HttpResponse
 
 from django.views.generic import ListView
@@ -18,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def inicio(req):
-
+    
     return render(req, 'AppCoderFinal/inicio.html')
 
 def destinos(req):
@@ -260,7 +260,11 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, "AppCoderFinal/inicio.html", {"mensaje":f"Bienvenido {usuario}"} )
+                avatar = Avatar.objects.filter(user=request.user.id)
+
+                return render(request, "AppCoderFinal/inicio.html", {"mensaje":f"Bienvenido {usuario}" ,
+                    "url":avatar[0].imagen.url
+                } )
             
             else:
 
@@ -303,4 +307,36 @@ def register(request):
         return render(request, "AppCoderFinal/registro.html", {'form':form} )
 
 
+     ### EDITAR PERFIL ####
+
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
+
+            information = miFormulario.cleaned_data
+
+            usuario.email = information['email']
+            usuario.password1 = information['password1']
+            usuario.password2 = information['password2']
+            usuario.first_name = information['first_name']
+            usuario.last_name = information['last_name']
+            usuario.save()
+
+            return render(request, "AppCoderFinal/inicio.html")
+
+    else:
+
+        miFormulario = UserEditForm(initial={ 'email':usuario.email, 'first_name':usuario.first_name, 'last_name':usuario.last_name })
+
+        return render(request, "AppCoderFinal/editarPerfil.html", {'miFormulario':miFormulario, 'usuario':usuario})
+
+
+###########################
+
+    ### AVATARES ###
 
