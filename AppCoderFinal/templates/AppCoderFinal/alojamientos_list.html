@@ -1,0 +1,34 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        <h1>Alojamientos</h1>
+        <ul>
+            {% for alojamiento in object_list %}
+
+                <li>
+                    <p><strong>Tipo: {{ alojamiento.tipo }} </strong></p>
+                    <p>
+                        <a href="{% url 'DetailALJ' alojamiento.id %}"><button type="button" class="btn btn-info btn-sm">Ver</button></a>
+                        <a href="{% url 'UpdateALJ' alojamiento.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a>
+                        <a href="{% url 'DeleteALJ' alojamiento.id %}"><button type="button" class="btn btn-danger btn-sm">Borrar</button></a>
+                    </p>
+                </li>
+
+                
+            {% endfor %}
+        </ul>
+
+        <br>
+        <a href="{% url 'CreateALJ' %}"><button type="button" class="btn btn-primary">Nuevo Alojamiento</button></a>
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

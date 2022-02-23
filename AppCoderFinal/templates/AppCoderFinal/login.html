@@ -1,27 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
-</head>
-<body>
-    
-    <center>
-        <br>
-        <form action="" method="post">{% csrf_token %}
+{% extends 'AppCoderFinal/padre.html' %}
 
-            {{ form.as_p }}
-
-            <button type="submit"> Iniciar Sesión </button>
-        </form>
-        <br>
-
-    </center>
+{% load static %}
 
 
+{% block contenidoQueCambia %}
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LOGIN</title>
+    </head>
+    <body>
+        
+        <center>
+            <br>
+            <form action="" method="post">{% csrf_token %}
 
-</body>
-</html>
+                {{ form.as_p }}
+
+                <button type="submit"> Iniciar Sesión </button>
+            </form>
+            <br>
+            <br>
+            <br>
+
+        <p>
+            <a href="{% url 'inicio' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+        </p>
+
+        </center>
+
+    </body>
+    </html>
+
+{% endblock contenidoQueCambia %}

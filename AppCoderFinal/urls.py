@@ -6,7 +6,7 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
 
     ### URLS MODULOS ####
-    path('', views.inicio, name="inicio"),
+    path('', views.landing, name="inicio"),
     path('destinos/', views.destinos, name="destinos"),
     path('alojamientos/', views.alojamientos, name="alojamientos"),
     path('excursiones/', views.excursiones, name="excursiones"),
@@ -33,7 +33,23 @@ urlpatterns = [
     path('crearDestino/', views.DestinoCreate.as_view(), name="Create"),
     path('editarDestino/<pk>/', views.DestinoUpdate.as_view(), name="Update"),
     path('eliminarDestino/<pk>/', views.DestinoDelete.as_view(), name="Delete"),
+
+         ##DESTINOS###
+
+    path('listaAlojamientos/', views.AlojamientosList.as_view(), name="ListALJ"),
+    path('detalleAlojamiento/<pk>/', views.AlojamientoDetail.as_view(), name="DetailALJ"),
+    path('crearAlojamiento/', views.AlojamientoCreate.as_view(), name="CreateALJ"),
+    path('editarAlojamiento/<pk>/', views.AlojamientoUpdate.as_view(), name="UpdateALJ"),
+    path('eliminarAlojamiento/<pk>/', views.AlojamientoDelete.as_view(), name="DeleteALJ"),
     
+         ##EXCURSIONES###
+
+    path('listaExcursiones/', views.ExcursionesList.as_view(), name="ListEXCU"),
+    path('detalleExcursion/<pk>/', views.ExcursionDetail.as_view(), name="DetailEXCU"),
+    path('crearExcursion/', views.ExcursionCreate.as_view(), name="CreateEXCU"),
+    path('editarExcursion/<pk>/', views.ExcursionUpdate.as_view(), name="UpdateEXCU"),
+    path('eliminarExcursion/<pk>/', views.ExcursionDelete.as_view(), name="DeleteEXCU"),
+
     ### LOGIN ###
 
     path('login/', views.login_request, name="Login"),

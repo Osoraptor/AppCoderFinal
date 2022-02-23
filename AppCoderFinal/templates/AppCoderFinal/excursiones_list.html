@@ -1,0 +1,34 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        <h1>Excursiones</h1>
+        <ul>
+            {% for excursion in object_list %}
+
+                <li>
+                    <p><strong>Lugar: {{ excursion.lugar }} </strong></p>
+                    <p>
+                        <a href="{% url 'DetailEXCU' excursion.id %}"><button type="button" class="btn btn-info btn-sm">Ver</button></a>
+                        <a href="{% url 'UpdateEXCU' excursion.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a>
+                        <a href="{% url 'DeleteEXCU' excursion.id %}"><button type="button" class="btn btn-danger btn-sm">Borrar</button></a>
+                    </p>
+                </li>
+
+                
+            {% endfor %}
+        </ul>
+
+        <br>
+        <a href="{% url 'CreateEXCU' %}"><button type="button" class="btn btn-primary">Nueva Excursion</button></a>
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

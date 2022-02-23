@@ -1,0 +1,21 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        <p>Nombre del lugar de la excursión: <i>{{ excursiones.lugar }}</i> </p>
+        <p>Duración: <i>{{ excursiones.duracion }} minutos.</i> </p>
+        <p>Precio: <i>$ {{ excursiones.precio }} USD.</i> </p>
+        <p>
+            <a href="{% url 'ListEXCU' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+        </p>
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

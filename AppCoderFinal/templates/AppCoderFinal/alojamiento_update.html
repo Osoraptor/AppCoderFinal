@@ -11,30 +11,27 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registro</title>
+        <title>Alojamiento Formulario</title>
     </head>
     <body>
-        
-    
+        <center>
             <br>
-            <form action="" method="post">{% csrf_token %}
+            <form method="post">{% csrf_token %}
 
                 {{ form.as_p }}
-
-                <button type="submit"> Registrate!!! </button>
+    
+                <input type="submit" value="Enviar" />
             </form>
+        
             <br>
-            <br>
-            <br>
-
-        <p>
-            <a href="{% url 'inicio' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
-        </p>
-
-
+            <p>
+                <a href="{% url 'ListALJ' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+            </p>
+        </center>
 
 
     </body>
     </html>
+
 
 {% endblock contenidoQueCambia %}

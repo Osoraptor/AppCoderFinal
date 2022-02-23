@@ -1,0 +1,44 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario Nuevo Alojamiento</title>
+    </head>
+    <body>
+        <center>
+            <form action="{% url 'CreateALJ' %}" method="post">{% csrf_token %}
+                <br>
+                <p>Agrega un nuevo alojamiento.</p>
+                <br>
+                
+                <table>
+                    {{ form.as_table }}
+                </table>
+
+                <br>
+                <input type="submit" value="Crear">
+                <br>
+
+                <br>
+                <p>
+                    <a href="{% url 'ListALJ' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+                </p>
+
+            </form>
+        </center>
+    </body>
+    </html>
+
+
+{% endblock contenidoQueCambia %}
+
+

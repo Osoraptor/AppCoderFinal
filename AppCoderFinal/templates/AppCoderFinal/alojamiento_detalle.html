@@ -1,0 +1,21 @@
+{% extends 'AppCoderFinal/padre.html' %}
+
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    
+    <body>
+        
+        <p>Nombre del Alojamiento: <i>{{ alojamientos.tipo }}</i> </p>
+        <p>Visitantes: <i>{{ alojamientos.visitantes }} personas</i> </p>
+        <p>Precio: <i>$ {{ alojamientos.precio }} USD</i> </p>
+        <p>
+            <a href="{% url 'ListALJ' %}"><button type="button" class="btn btn-primary btn-sm">Volver</button></a>
+        </p>
+
+    </body>
+
+    
+{% endblock contenidoQueCambia %}

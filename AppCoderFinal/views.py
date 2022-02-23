@@ -21,20 +21,24 @@ def inicio(req):
     
     return render(req, 'AppCoderFinal/inicio.html')
 
+def landing(req):
+    
+    return render(req, 'AppCoderFinal/landing.html')
+
 def destinos(req):
 
     lista = Destinos.objects.all()
 
     return render(req, 'AppCoderFinal/destinos.html', {"lista": lista})
 
-@login_required
+#@login_required
 def alojamientos(req):
 
     lista = Alojamientos.objects.all()
     
     return render(req, 'AppCoderFinal/alojamientos.html', {"lista": lista})
 
-@login_required
+#@login_required
 def excursiones(req):
 
     lista = Excursiones.objects.all()
@@ -221,24 +225,90 @@ class DestinoDetail(LoginRequiredMixin ,DetailView):
     model = Destinos
     template_name = "AppCoderFinal/destino_detalle.html"
 
-class DestinoCreate(LoginRequiredMixin ,CreateView): #DONE
+class DestinoCreate(LoginRequiredMixin ,CreateView): 
 
     model = Destinos
     success_url = "/AppCoderFinal/listaDestinos"
     fields = ['pais', 'ciudad']   
     template_name = "AppCoderFinal/destino_create.html" 
 
-class DestinoUpdate(LoginRequiredMixin ,UpdateView): #DONE
+class DestinoUpdate(LoginRequiredMixin ,UpdateView): 
 
     model = Destinos
     fields = ['pais', 'ciudad'] 
     success_url = "/AppCoderFinal/listaDestinos"
     template_name = "AppCoderFinal/destino_form.html"   
 
-class DestinoDelete(LoginRequiredMixin ,DeleteView): #PENDING
+class DestinoDelete(LoginRequiredMixin ,DeleteView): 
 
     model = Destinos
     success_url = "/AppCoderFinal/listaDestinos"
+
+
+
+        ### ALOJAMIENTOS ###
+
+class AlojamientosList(LoginRequiredMixin ,ListView):
+
+    model = Alojamientos
+    template_name = "AppCoderFinal/alojamientos_list.html"
+
+class AlojamientoDetail(LoginRequiredMixin ,DetailView):
+
+    model = Alojamientos
+    template_name = "AppCoderFinal/alojamiento_detalle.html"
+
+class AlojamientoCreate(LoginRequiredMixin ,CreateView): 
+
+    model = Alojamientos
+    success_url = "/AppCoderFinal/listaAlojamientos"
+    fields = ['tipo', 'precio', 'visitantes']   
+    template_name = "AppCoderFinal/alojamiento_create.html" 
+
+class AlojamientoUpdate(LoginRequiredMixin ,UpdateView): 
+
+    model = Alojamientos
+    fields = ['tipo', 'precio', 'visitantes'] 
+    success_url = "/AppCoderFinal/listaAlojamientos"
+    template_name = "AppCoderFinal/alojamiento_update.html" #Nota: alojamiento_form   
+
+class AlojamientoDelete(LoginRequiredMixin ,DeleteView): 
+
+    model = Alojamientos
+    success_url = "/AppCoderFinal/listaAlojamientos"
+
+
+
+        ### EXCURSIONES ###
+
+class ExcursionesList(LoginRequiredMixin ,ListView):
+
+    model = Excursiones
+    template_name = "AppCoderFinal/excursiones_list.html"
+
+class ExcursionDetail(LoginRequiredMixin ,DetailView):
+
+    model = Excursiones
+    template_name = "AppCoderFinal/excursion_detalle.html"
+
+class ExcursionCreate(LoginRequiredMixin ,CreateView): 
+
+    model = Excursiones
+    success_url = "/AppCoderFinal/listaExcursiones"
+    fields = ['lugar', 'duracion', 'precio']   
+    template_name = "AppCoderFinal/excursion_create.html" 
+
+class ExcursionUpdate(LoginRequiredMixin ,UpdateView): 
+
+    model = Excursiones
+    fields = ['lugar', 'duracion', 'precio'] 
+    success_url = "/AppCoderFinal/listaExcursiones"
+    template_name = "AppCoderFinal/excursion_update.html" #Nota: alojamiento_form   
+
+class ExcursionDelete(LoginRequiredMixin ,DeleteView): 
+
+    model = Excursiones
+    success_url = "/AppCoderFinal/listaExcursiones"
 
 
 ##################################################
@@ -260,7 +330,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                avatar = Avatar.objects.filter(user=request.user.id)
+                avatar = Avatar.objects.all() #filter(user=request.user.id) #Nota: se agrega el all para solucionar temporalmente problema de avatars.
 
                 return render(request, "AppCoderFinal/inicio.html", {"mensaje":f"Bienvenido {usuario}" ,
                     "url":avatar[0].imagen.url
